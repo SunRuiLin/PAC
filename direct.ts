@@ -230,7 +230,7 @@ if (!shExpMatch && console.group) {
         "mail.google.com"
     ];
     console.group(re.toString());
-    hosts.forEach(function (h) {
+    hosts.forEach(h => {
         console.log(h + " | " + FindProxyForURL("", h));
     });
     console.groupEnd();
