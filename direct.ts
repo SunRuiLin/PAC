@@ -1,8 +1,5 @@
 const proxy = "SOCKS5 localhost:51080",
     host_rules = [
-        // Test
-        "www.test.*",
-
         // IP138
         "*.ip138.com",
 
