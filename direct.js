@@ -11,7 +11,7 @@ var RULES = [
     // RegexPer
     "*.regexPer.com",
     // Global Cash
-    "*.globalcash.hk",
+    "*.globalCash.hk",
     // Free Currency Rates
     "*.freeCurrencyRates.com",
     // WordPress
@@ -19,7 +19,7 @@ var RULES = [
     // MobileRead
     "*.mobileRead.com",
     // Calibre
-    "*.calibre-ebook.com",
+    "*.calibre-eBook.com",
     // Mail
     "*.mail.com",
     "*.uiCdn.com",
@@ -28,8 +28,8 @@ var RULES = [
     // IP Tracker
     "www.ip-tracker.org",
     // GitHub
-    "*.github.io",
-    "gist.github.com",
+    "*.gitHub.io",
+    "gist.gitHub.com",
     // W3Schools
     "*.w3schools.com",
     // Facebook

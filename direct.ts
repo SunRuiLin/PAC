@@ -17,7 +17,7 @@ const RULES = [
     "*.regexPer.com",
 
     // Global Cash
-    "*.globalcash.hk",
+    "*.globalCash.hk",
 
     // Free Currency Rates
     "*.freeCurrencyRates.com",
@@ -29,7 +29,7 @@ const RULES = [
     "*.mobileRead.com",
 
     // Calibre
-    "*.calibre-ebook.com",
+    "*.calibre-eBook.com",
 
     // Mail
     "*.mail.com",
@@ -41,8 +41,8 @@ const RULES = [
     "www.ip-tracker.org",
 
     // GitHub
-    "*.github.io",
-    "gist.github.com",
+    "*.gitHub.io",
+    "gist.gitHub.com",
 
     // W3Schools
     "*.w3schools.com",
