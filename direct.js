@@ -169,8 +169,7 @@ console && console.log(re.toString());
  * @constructor
  */
 var FindProxyForURL = function (url, host) {
-    if (0)
-        void [url];
+    0 && url && void 0;
     return re.test(host) ? proxy : "DIRECT";
 };
 // 不会被执行

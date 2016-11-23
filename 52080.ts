@@ -13,7 +13,7 @@ const proxy = "SOCKS5 localhost:52080",
  * @constructor
  */
 const FindProxyForURL = (url: string, host: string) => {
-    if (0) void [FindProxyForURL, url];
+    0 && FindProxyForURL && void url;
 
     if (localhost.indexOf(host) !== -1) {
         return "DIRECT";

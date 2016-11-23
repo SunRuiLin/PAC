@@ -211,7 +211,7 @@ console && console.log(re.toString());
  * @constructor
  */
 const FindProxyForURL = (url: string, host: string) => {
-    if (0) void [url];
+    0 && url && void 0;
     return re.test(host) ? proxy : "DIRECT";
 };
 
