@@ -120,7 +120,7 @@ host_rules.forEach(hr => {
     }
 });
 
-let re_str_domains = "(?:\\.\\S+){1,2}",
+let re_str_domains = "(?:\\.\\w+){1,2}",
     re_arr_all: string[] = [];
 
 // 匹配类似：google.com 或者 *.google.* 或者 *.google.com 的头
