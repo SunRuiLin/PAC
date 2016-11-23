@@ -120,12 +120,6 @@ host_rules.forEach(hr => {
     }
 });
 
-// console && console.log(host_rules_x_google_x.join("|"));
-// console && console.log(host_rules_x_google_com.join("|"));
-// console && console.log(host_rules_www_google_x.join("|"));
-// console && console.log(host_rules_www_google_com.join("|"));
-
-
 let re_str_domains = "(?:\\.[A-Za-z]+){1,2}",
     re_arr_all: string[] = [];
 
@@ -177,15 +171,12 @@ if (host_rules_www_google_com.length > 0) {
 const re_str_all = `^(?:${re_arr_all.join("|")})$`,
     re = new RegExp(re_str_all, "i");
 
-// console && console.log(re_str_domains);
-// console && console.log(re_str_all);
-// console && console.log(re.toString());
-
 /**
  * 入口函数
  * @param url URL
  * @param host HOST
  * @return {string} 返回代理
+ * @constructor
  */
 const FindProxyForURL = (url: string, host: string) => {
     // if (url) void 0;

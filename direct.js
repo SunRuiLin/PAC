@@ -92,10 +92,6 @@ host_rules.forEach(function (hr) {
         host_rules_www_google_com.push(hr.replace(/\./g, "\\."));
     }
 });
-// console && console.log(host_rules_x_google_x.join("|"));
-// console && console.log(host_rules_x_google_com.join("|"));
-// console && console.log(host_rules_www_google_x.join("|"));
-// console && console.log(host_rules_www_google_com.join("|"));
 var re_str_domains = "(?:\\.[A-Za-z]+){1,2}", re_arr_all = [];
 // 匹配类似：google.com 或者 *.google.* 或者 *.google.com 的头
 if (host_rules_x_google_x.length > 0 || host_rules_x_google_com.length > 0) {
@@ -133,14 +129,12 @@ if (host_rules_www_google_com.length > 0) {
 }
 // 构建正则匹配规则
 var re_str_all = "^(?:" + re_arr_all.join("|") + ")$", re = new RegExp(re_str_all, "i");
-// console && console.log(re_str_domains);
-// console && console.log(re_str_all);
-// console && console.log(re.toString());
 /**
  * 入口函数
  * @param url URL
  * @param host HOST
  * @return {string} 返回代理
+ * @constructor
  */
 var FindProxyForURL = function (url, host) {
     // if (url) void 0;
