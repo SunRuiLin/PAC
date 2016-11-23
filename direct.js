@@ -123,14 +123,14 @@ host_rules.forEach(function (hr) {
         host_rules_www_google_com.push(hr.replace(/\./g, "\\."));
     }
 });
-var re_str_domains = "(?:" + domains.join("|").replace(/\./g, "\\.") + ")", re_arr_all = [];
+var str_domains = domains.join("|").replace(/\./g, "\\."), re_str_domains = domains.length > 1 ? "(?:" + str_domains + ")" : str_domains, re_arr_all = [];
 // 匹配类似：google.com 或者 *.google.* 或者 *.google.com 的头
 if (host_rules_x_google_x.length > 0 || host_rules_x_google_com.length > 0) {
     var re_arr_x = [];
     // 匹配类似：*.google.*
     if (host_rules_x_google_x.length > 0) {
         // 类似：(?:google|bing)
-        var re_str_x_google_x = "(?:" + host_rules_x_google_x.join("|") + ")";
+        var str_x_google_x = host_rules_x_google_x.join("|"), re_str_x_google_x = host_rules_x_google_x.length > 1 ? "(?:" + str_x_google_x + ")" : str_x_google_x;
         // 类似：(?:google|bing)(?:\.com|\.cn)
         re_str_x_google_x += re_str_domains;
         re_arr_x.push(re_str_x_google_x);
@@ -138,16 +138,17 @@ if (host_rules_x_google_x.length > 0 || host_rules_x_google_com.length > 0) {
     // 匹配类似：*.google.com
     if (host_rules_x_google_com.length > 0) {
         // 类似：(?:google.com|bing.cn)
-        var re_str_x_google_com = "(?:" + host_rules_x_google_com.join("|") + ")";
+        var str_x_google_com = host_rules_x_google_com.join("|"), re_str_x_google_com = host_rules_x_google_com.length > 1 ? "(?:" + str_x_google_com + ")" : str_x_google_com;
         re_arr_x.push(re_str_x_google_com);
     }
-    var re_str_x = "(?:\\S+\\.)?";
-    re_arr_all.push(re_str_x + "(?:" + re_arr_x.join("|") + ")");
+    var str_x = re_arr_x.join("|"), re_str_x = "(?:\\S+\\.)?";
+    re_str_x += re_arr_x.length > 1 ? "(?:" + str_x + ")" : str_x;
+    re_arr_all.push(re_str_x);
 }
 // 匹配类似：www.google.*
 if (host_rules_www_google_x.length > 0) {
     // 类似：(?:www.google|abc.bing)
-    var re_str_www_google_x = "(?:" + host_rules_www_google_x.join("|") + ")";
+    var str_www_google_x = host_rules_www_google_x.join("|"), re_str_www_google_x = host_rules_www_google_x.length > 1 ? "(?:" + str_www_google_x + ")" : str_www_google_x;
     // 类似：(?:www.google|abc.bing)(?:\.com|\.cn)
     re_str_www_google_x += re_str_domains;
     re_arr_all.push(re_str_www_google_x);
@@ -155,11 +156,11 @@ if (host_rules_www_google_x.length > 0) {
 // 匹配类似：www.google.com
 if (host_rules_www_google_com.length > 0) {
     // 类似：(?:www.google.com|abc.bing.cn)
-    var re_str_www_google_com = "(?:" + host_rules_www_google_com.join("|") + ")";
+    var str_www_google_com = host_rules_www_google_com.join("|"), re_str_www_google_com = host_rules_www_google_com.length > 1 ? "(?:" + str_www_google_com + ")" : str_www_google_com;
     re_arr_all.push(re_str_www_google_com);
 }
 // 构建正则匹配规则
-var re_str_all = "^(?:" + re_arr_all.join("|") + ")$", re = new RegExp(re_str_all, "i");
+var str_all = re_arr_all.join("|"), re_str_all = "^" + (re_arr_all.length > 1 ? "(?:" + str_all + ")" : str_all) + "$", re = new RegExp(re_str_all, "i");
 console && console.log(re.toString());
 /**
  * 入口函数

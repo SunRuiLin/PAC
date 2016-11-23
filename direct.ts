@@ -152,7 +152,8 @@ host_rules.forEach(hr => {
     }
 });
 
-const re_str_domains = `(?:${domains.join("|").replace(/\./g, "\\.")})`,
+const str_domains = domains.join("|").replace(/\./g, "\\."),
+    re_str_domains = domains.length > 1 ? `(?:${str_domains})` : str_domains,
     re_arr_all: string[] = [];
 
 // 匹配类似：google.com 或者 *.google.* 或者 *.google.com 的头
@@ -162,7 +163,8 @@ if (host_rules_x_google_x.length > 0 || host_rules_x_google_com.length > 0) {
     // 匹配类似：*.google.*
     if (host_rules_x_google_x.length > 0) {
         // 类似：(?:google|bing)
-        let re_str_x_google_x = `(?:${host_rules_x_google_x.join("|")})`;
+        let str_x_google_x = host_rules_x_google_x.join("|"),
+            re_str_x_google_x = host_rules_x_google_x.length > 1 ? `(?:${str_x_google_x})` : str_x_google_x;
         // 类似：(?:google|bing)(?:\.com|\.cn)
         re_str_x_google_x += re_str_domains;
 
@@ -172,19 +174,23 @@ if (host_rules_x_google_x.length > 0 || host_rules_x_google_com.length > 0) {
     // 匹配类似：*.google.com
     if (host_rules_x_google_com.length > 0) {
         // 类似：(?:google.com|bing.cn)
-        let re_str_x_google_com = `(?:${host_rules_x_google_com.join("|")})`;
+        let str_x_google_com = host_rules_x_google_com.join("|"),
+            re_str_x_google_com = host_rules_x_google_com.length > 1 ? `(?:${str_x_google_com})` : str_x_google_com;
 
         re_arr_x.push(re_str_x_google_com);
     }
 
-    const re_str_x = `(?:\\S+\\.)?`;
-    re_arr_all.push(`${re_str_x}(?:${re_arr_x.join("|")})`);
+    let str_x = re_arr_x.join("|"),
+        re_str_x = `(?:\\S+\\.)?`;
+    re_str_x += re_arr_x.length > 1 ? `(?:${str_x})` : str_x;
+    re_arr_all.push(re_str_x);
 }
 
 // 匹配类似：www.google.*
 if (host_rules_www_google_x.length > 0) {
     // 类似：(?:www.google|abc.bing)
-    let re_str_www_google_x = `(?:${host_rules_www_google_x.join("|")})`;
+    let str_www_google_x = host_rules_www_google_x.join("|"),
+        re_str_www_google_x = host_rules_www_google_x.length > 1 ? `(?:${str_www_google_x})` : str_www_google_x;
     // 类似：(?:www.google|abc.bing)(?:\.com|\.cn)
     re_str_www_google_x += re_str_domains;
 
@@ -194,13 +200,15 @@ if (host_rules_www_google_x.length > 0) {
 // 匹配类似：www.google.com
 if (host_rules_www_google_com.length > 0) {
     // 类似：(?:www.google.com|abc.bing.cn)
-    let re_str_www_google_com = `(?:${host_rules_www_google_com.join("|")})`;
+    let str_www_google_com = host_rules_www_google_com.join("|"),
+        re_str_www_google_com = host_rules_www_google_com.length > 1 ? `(?:${str_www_google_com})` : str_www_google_com;
 
     re_arr_all.push(re_str_www_google_com);
 }
 
 // 构建正则匹配规则
-const re_str_all = `^(?:${re_arr_all.join("|")})$`,
+const str_all = re_arr_all.join("|"),
+    re_str_all = `^${re_arr_all.length > 1 ? `(?:${str_all})` : str_all}$`,
     re = new RegExp(re_str_all, "i");
 console && console.log(re.toString());
 /**
