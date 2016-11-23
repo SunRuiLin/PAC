@@ -69,7 +69,38 @@ var proxy = "SOCKS5 localhost:51080", host_rules = [
     "*.googleAdServices.*",
     "*.google-analytics.com",
     "*.googleTagServices.*",
-    "*.googleUserContent.com"
+    "*.googleUserContent.com",
+], domains = [
+    ".au",
+    ".cn",
+    ".ca",
+    ".br",
+    ".de",
+    ".es",
+    ".fr",
+    ".gl",
+    ".hk",
+    ".in",
+    ".it",
+    ".io",
+    ".jp",
+    ".mx",
+    ".nl",
+    ".sg",
+    ".tw",
+    ".uk",
+    ".com",
+    ".net",
+    ".org",
+    ".co.jp",
+    ".co.uk",
+    ".com.sg",
+    ".com.au",
+    ".com.cn",
+    ".com.hk",
+    ".com.br",
+    ".com.mx",
+    ".com.tw",
 ];
 var host_rules_x_google_x = [], host_rules_x_google_com = [], host_rules_www_google_x = [], host_rules_www_google_com = [];
 // 规则分类
@@ -92,7 +123,7 @@ host_rules.forEach(function (hr) {
         host_rules_www_google_com.push(hr.replace(/\./g, "\\."));
     }
 });
-var re_str_domains = "(?:\\.\\w+){1,2}", re_arr_all = [];
+var re_str_domains = "(?:" + domains.join("|").replace(/\./g, "\\.") + ")", re_arr_all = [];
 // 匹配类似：google.com 或者 *.google.* 或者 *.google.com 的头
 if (host_rules_x_google_x.length > 0 || host_rules_x_google_com.length > 0) {
     var re_arr_x = [];

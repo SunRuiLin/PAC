@@ -88,7 +88,39 @@ const proxy = "SOCKS5 localhost:51080",
         "*.googleAdServices.*",
         "*.google-analytics.com",
         "*.googleTagServices.*",
-        "*.googleUserContent.com"
+        "*.googleUserContent.com",
+    ],
+    domains = [
+        ".au",
+        ".cn",
+        ".ca",
+        ".br",
+        ".de",
+        ".es",
+        ".fr",
+        ".gl",
+        ".hk",
+        ".in",
+        ".it",
+        ".io",
+        ".jp",
+        ".mx",
+        ".nl",
+        ".sg",
+        ".tw",
+        ".uk",
+        ".com",
+        ".net",
+        ".org",
+        ".co.jp",
+        ".co.uk",
+        ".com.sg",
+        ".com.au",
+        ".com.cn",
+        ".com.hk",
+        ".com.br",
+        ".com.mx",
+        ".com.tw",
     ];
 
 let host_rules_x_google_x: string[] = [],
@@ -120,7 +152,7 @@ host_rules.forEach(hr => {
     }
 });
 
-let re_str_domains = "(?:\\.\\w+){1,2}",
+const re_str_domains = `(?:${domains.join("|").replace(/\./g, "\\.")})`,
     re_arr_all: string[] = [];
 
 // 匹配类似：google.com 或者 *.google.* 或者 *.google.com 的头
