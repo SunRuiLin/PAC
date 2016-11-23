@@ -145,7 +145,7 @@ if (host_rules_x_google_x.length > 0 || host_rules_x_google_com.length > 0) {
         re_arr_x.push(re_str_x_google_com);
     }
 
-    const re_str_x = `(?:\\w+\\.)?`;
+    const re_str_x = `(?:\\S+\\.)?`;
     re_arr_all.push(`${re_str_x}(?:${re_arr_x.join("|")})`);
 }
 

@@ -110,7 +110,7 @@ if (host_rules_x_google_x.length > 0 || host_rules_x_google_com.length > 0) {
         var re_str_x_google_com = "(?:" + host_rules_x_google_com.join("|") + ")";
         re_arr_x.push(re_str_x_google_com);
     }
-    var re_str_x = "(?:\\w+\\.)?";
+    var re_str_x = "(?:\\S+\\.)?";
     re_arr_all.push(re_str_x + "(?:" + re_arr_x.join("|") + ")");
 }
 // 匹配类似：www.google.*
