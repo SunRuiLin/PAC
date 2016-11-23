@@ -1,19 +1,21 @@
 {
-    "compileOnSave": true,
-    "compilerOptions": {
-        "noImplicitThis": true,
-        "noEmitOnError": true,
-        "noImplicitReturns": true,
-        "noImplicitAny": true,
-        "strictNullChecks": true,
-        "suppressImplicitAnyIndexErrors": true,
-        //    "alwaysStrict": true,
-        "removeComments": false,
-        "target": "es5",
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-        "sourceMap": true,
-        "declaration": false,
-        "watch": true
-    }
+  "compileOnSave": true,
+  "compilerOptions": {
+    "noImplicitThis": true,
+    "noEmitOnError": true,
+    "noImplicitReturns": true,
+    "noImplicitAny": true,
+    "noFallthroughCasesInSwitch": true,
+    "strictNullChecks": true,
+    "suppressImplicitAnyIndexErrors": true,
+    //    "alwaysStrict": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "removeComments": false,
+    "module": "commonjs",
+    "target": "es5",
+    "sourceMap": true,
+    "declaration": false,
+    "watch": true
+  }
 }
