@@ -141,7 +141,6 @@ var re_str_all = "^(?:" + re_arr_all.join("|") + ")$", re = new RegExp(re_str_al
  * @param url URL
  * @param host HOST
  * @return {string} 返回代理
- * @constructor
  */
 var FindProxyForURL = function (url, host) {
     // if (url) void 0;

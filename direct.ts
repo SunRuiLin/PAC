@@ -186,7 +186,6 @@ const re_str_all = `^(?:${re_arr_all.join("|")})$`,
  * @param url URL
  * @param host HOST
  * @return {string} 返回代理
- * @constructor
  */
 const FindProxyForURL = (url: string, host: string) => {
     // if (url) void 0;
