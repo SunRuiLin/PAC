@@ -161,7 +161,6 @@ if (host_rules_www_google_com.length > 0) {
 }
 // 构建正则匹配规则
 var str_all = re_arr_all.join("|"), re_str_all = "^" + (re_arr_all.length > 1 ? "(?:" + str_all + ")" : str_all) + "$", re = new RegExp(re_str_all, "i");
-console && console.log(re.toString());
 /**
  * 入口函数
  * @param url URL
