@@ -1,197 +1,189 @@
-const PROXY = "SOCKS5 localhost:51080";
+const proxy = "SOCKS5 localhost:51080",
+    host_rules = [
+        // Test
+        "www.test.*",
 
-const RULES = [
-    // IP138
-    "*.ip138.com",
+        // IP138
+        "*.ip138.com",
 
-    // V2EX
-    "*.v2ex.com",
+        // V2EX
+        "*.v2ex.com",
 
-    // Mozilla
-    "*.mozilla.org",
+        // Mozilla
+        "*.mozilla.org",
 
-    // Regex101
-    "*.regex101.com",
+        // Regex101
+        "*.regex101.com",
 
-    // RegexPer
-    "*.regexPer.com",
+        // RegexPer
+        "*.regexPer.com",
 
-    // Global Cash
-    "*.globalCash.hk",
+        // Global Cash
+        "*.globalCash.hk",
 
-    // Free Currency Rates
-    "*.freeCurrencyRates.com",
+        // Free Currency Rates
+        "*.freeCurrencyRates.com",
 
-    // WordPress
-    "*.wordPress.com",
+        // WordPress
+        "*.wordPress.com",
 
-    // MobileRead
-    "*.mobileRead.com",
+        // MobileRead
+        "*.mobileRead.com",
 
-    // Calibre
-    "*.calibre-eBook.com",
+        // Calibre
+        "*.calibre-eBook.com",
 
-    // Mail
-    "*.mail.com",
-    "*.uiCdn.com",
-    "*.ui-portal.de",
-    "*.deRef-mail.com",
+        // Mail
+        "*.mail.com",
+        "*.uiCdn.com",
+        "*.ui-portal.de",
+        "*.deRef-mail.com",
 
-    // IP Tracker
-    "www.ip-tracker.org",
+        // IP Tracker
+        "www.ip-tracker.org",
 
-    // GitHub
-    "*.gitHub.io",
-    "gist.gitHub.com",
+        // GitHub
+        "*.gitHub.io",
+        "gist.gitHub.com",
 
-    // W3Schools
-    "*.w3schools.com",
+        // W3Schools
+        "*.w3schools.com",
 
-    // Facebook
-    "*.facebook.*",
+        // Facebook
+        "*.facebook.*",
 
-    // Twitter
-    "*.twitter.com",
-    "*.twImg.com",
+        // Twitter
+        "*.twitter.com",
+        "*.twImg.com",
 
-    // Wikipedia
-    "*.wikipedia.org",
+        // Wikipedia
+        "*.wikipedia.org",
 
-    // Amazon
-    // "*.amazon.com",
-    // "*.awsStatic.com",
-    // "*.cloudFront.net",
-    // "*.amazonAws.com",
-    // "*.amazon-adSystem.com",
-    // "*.amazonWebServices.com",
-    // "*.ssl-images-amazon.com",
+        // Amazon
+        // "*.amazon.com",
+        // "*.awsStatic.com",
+        // "*.cloudFront.net",
+        // "*.amazonAws.com",
+        // "*.amazon-adSystem.com",
+        // "*.amazonWebServices.com",
+        // "*.ssl-images-amazon.com",
 
-    // Google
-    "*.goo.gl",
-    "*.gvt1.com",
-    "*.gMail.*",
-    "*.ggPht.com",
-    "*.ytImg.*",
-    "*.google.*",
-    "*.chrome.com",
-    "*.gStatic.com",
-    "*.youtube.*",
-    "*.Blogger.*",
-    "*.appSpot.*",
-    "*.android.com",
-    "*.blogSpot.*",
-    "*.blogBlog.*",
-    "*.chromium.*",
-    "*.googleapis.com",
-    "*.googleVideo.*",
-    "*.doubleClick.net",
-    "*.googleSource.*",
-    "*.googleAdServices.*",
-    "*.google-analytics.com",
-    "*.googleTagServices.*",
-    "*.googleUserContent.com"
-];
+        // Google
+        "*.goo.gl",
+        "*.gvt1.com",
+        "*.gMail.*",
+        "*.ggPht.com",
+        "*.ytImg.*",
+        "*.google.*",
+        "*.chrome.com",
+        "*.gStatic.com",
+        "*.youtube.*",
+        "*.Blogger.*",
+        "*.appSpot.*",
+        "*.android.com",
+        "*.blogSpot.*",
+        "*.blogBlog.*",
+        "*.chromium.*",
+        "*.googleapis.com",
+        "*.googleVideo.*",
+        "*.doubleClick.net",
+        "*.googleSource.*",
+        "*.googleAdServices.*",
+        "*.google-analytics.com",
+        "*.googleTagServices.*",
+        "*.googleUserContent.com"
+    ];
 
-const DOMAINS = [
-        ".jp",
-        ".uk",
-        ".in",
-        ".kr",
-        ".br",
-        ".hk",
-        ".tw",
-        ".au",
-        ".sg",
-        ".cc",
-        ".cn",
-        ".com",
-        ".org",
-        ".net",
-        ".co.jp",
-        ".co.uk",
-        ".co.in",
-        ".co.kr",
-        ".com.br",
-        ".com.sg",
-        ".com.cn",
-        ".com.hk",
-        ".com.tw",
-        ".com.au"
-    ],
-    // 类似：(?:\.com|\.cn)
-    RE_DOMAINS = "(?:" + DOMAINS.join("|").replace(/\./g, "\\.") + ")";
+let host_rules_x_google_x: string[] = [],
+    host_rules_x_google_com: string[] = [],
+    host_rules_www_google_x: string[] = [],
+    host_rules_www_google_com: string[] = [];
 
-let HOSTS_X_GOOGLE_X = "", HOSTS_X_GOOGLE_COM = "", HOSTS_WWW_GOOGLE_X = "", HOSTS_WWW_GOOGLE_COM = "",
-    RE_X_GOOGLE_X = "", RE_X_GOOGLE_COM = "", RE_WWW_GOOGLE_X = "", RE_WWW_GOOGLE_COM = "",
-    RE_X = "";
-
-// 遍历处理
-RULES.map(function (host_rule) {
-    // 跳过空规则
-    if (host_rule === "") return;
-    // ----------------------------------------
+// 规则分类
+host_rules.forEach(hr => {
     // 匹配类似：*.google.*
-    if (/^\*\..+\.\*$/.test(host_rule)) {
+    if (/^\*\.\w+\.\*$/.test(hr)) {
         // 分类保存
-        HOSTS_X_GOOGLE_X += host_rule + "|";
+        host_rules_x_google_x.push(hr.replace(/^\*\.|\.\*$/g, "").replace(/\./g, "\\."));
     }
     // 匹配类似：*.google.com
-    else if (/^\*\./.test(host_rule)) {
+    else if (/^\*\.\w+/.test(hr)) {
         // 分类保存
-        HOSTS_X_GOOGLE_COM += host_rule + "|";
+        host_rules_x_google_com.push(hr.replace(/^\*\./, "").replace(/\./g, "\\."));
     }
     // 匹配类似：www.google.*
-    else if (/\.\*$/.test(host_rule)) {
+    else if (/\w+\.\*$/.test(hr)) {
         // 分类保存
-        HOSTS_WWW_GOOGLE_X += host_rule + "|";
+        host_rules_www_google_x.push(hr.replace(/\.\*$/, "").replace(/\./g, "\\."));
     }
     // 其他类似：www.google.com
     else {
         // 分类保存
-        HOSTS_WWW_GOOGLE_COM += host_rule + "|";
+        host_rules_www_google_com.push(hr.replace(/\./g, "\\."));
     }
 });
-// ------------------------------------------------------------
-// 类似：google.com 或者 *.google.com 的头
-if (HOSTS_X_GOOGLE_X + HOSTS_X_GOOGLE_COM !== "") {
-    RE_X = "(?:.+\\.)?";
+
+// console && console.log(host_rules_x_google_x.join("|"));
+// console && console.log(host_rules_x_google_com.join("|"));
+// console && console.log(host_rules_www_google_x.join("|"));
+// console && console.log(host_rules_www_google_com.join("|"));
+
+
+let re_str_domains = "(?:\\.[A-Za-z]+){1,2}",
+    re_arr_all: string[] = [];
+
+// 匹配类似：google.com 或者 *.google.* 或者 *.google.com 的头
+if (host_rules_x_google_x.length > 0 || host_rules_x_google_com.length > 0) {
+    let re_arr_x: string[] = [];
+
+    // 匹配类似：*.google.*
+    if (host_rules_x_google_x.length > 0) {
+        // 类似：(?:google|bing)
+        let re_str_x_google_x = `(?:${host_rules_x_google_x.join("|")})`;
+        // 类似：(?:google|bing)(?:\.com|\.cn)
+        re_str_x_google_x += re_str_domains;
+
+        re_arr_x.push(re_str_x_google_x);
+    }
+
+    // 匹配类似：*.google.com
+    if (host_rules_x_google_com.length > 0) {
+        // 类似：(?:google.com|bing.cn)
+        let re_str_x_google_com = `(?:${host_rules_x_google_com.join("|")})`;
+
+        re_arr_x.push(re_str_x_google_com);
+    }
+
+    const re_str_x = `(?:\\w+\\.)?`;
+    re_arr_all.push(`${re_str_x}(?:${re_arr_x.join("|")})`);
 }
-// ----------------------------------------
-// 类似：*.google.*
-if (HOSTS_X_GOOGLE_X !== "") {
-    // 类似：(?:google|bing)
-    RE_X_GOOGLE_X = "(?:" + HOSTS_X_GOOGLE_X.replace(/\*\.|\.\*/g, "").replace(/\./g, "\\.").replace(/\|$/, "") + ")";
-    // 类似：(?:google|bing)(?:\.com|\.cn)
-    RE_X_GOOGLE_X += RE_DOMAINS;
-}
-// ----------------------------------------
-// 类似：*.google.com
-if (HOSTS_X_GOOGLE_COM !== "") {
-    // 类似：(?:google.com|bing.cn)
-    RE_X_GOOGLE_COM = "(?:" + HOSTS_X_GOOGLE_COM.replace(/\*\./g, "").replace(/\./g, "\\.").replace(/\|$/, "") + ")";
-}
-// ----------------------------------------
-// 类似：www.google.*
-if (HOSTS_WWW_GOOGLE_X !== "") {
+
+// 匹配类似：www.google.*
+if (host_rules_www_google_x.length > 0) {
     // 类似：(?:www.google|abc.bing)
-    RE_WWW_GOOGLE_X = "(?:" + HOSTS_WWW_GOOGLE_X.replace(/\.\*/g, "").replace(/\./g, "\\.").replace(/\|$/, "") + ")";
+    let re_str_www_google_x = `(?:${host_rules_www_google_x.join("|")})`;
     // 类似：(?:www.google|abc.bing)(?:\.com|\.cn)
-    RE_WWW_GOOGLE_X += RE_DOMAINS;
+    re_str_www_google_x += re_str_domains;
+
+    re_arr_all.push(re_str_www_google_x);
 }
-// ----------------------------------------
-// 类似：www.google.com
-if (HOSTS_WWW_GOOGLE_COM !== "") {
+
+// 匹配类似：www.google.com
+if (host_rules_www_google_com.length > 0) {
     // 类似：(?:www.google.com|abc.bing.cn)
-    RE_WWW_GOOGLE_COM = "(?:" + HOSTS_WWW_GOOGLE_COM.replace(/\./g, "\\.").replace(/\|$/, "") + ")";
+    let re_str_www_google_com = `(?:${host_rules_www_google_com.join("|")})`;
+
+    re_arr_all.push(re_str_www_google_com);
 }
-// ------------------------------------------------------------
+
 // 构建正则匹配规则
-let RE_ALL = "^(?:" + RE_X + "(?:" + RE_X_GOOGLE_X + "|" + RE_X_GOOGLE_COM + ")" + "|" + RE_WWW_GOOGLE_X + "|" + RE_WWW_GOOGLE_COM + ")$";
-// 替换多余字符
-RE_ALL = RE_ALL.replace(/:\|+/g, ":").replace(/\|+\)/g, ")").replace(/(\(\?:\))+/g, "").replace(/\|{2,}/g, "|");
-// 创建正则对象，并且不区分大小写
-let REGEXP = new RegExp(RE_ALL, "i");
-// ------------------------------------------------------------
+const re_str_all = `^(?:${re_arr_all.join("|")})$`,
+    re = new RegExp(re_str_all, "i");
+
+// console && console.log(re_str_domains);
+// console && console.log(re_str_all);
+// console && console.log(re.toString());
+
 /**
  * 入口函数
  * @param url URL
@@ -200,29 +192,27 @@ let REGEXP = new RegExp(RE_ALL, "i");
  * @constructor
  */
 const FindProxyForURL = (url: string, host: string) => {
-    if (url) void 0;
-    return REGEXP.test(host) ? PROXY : "DIRECT";
+    // if (url) void 0;
+    return re.test(host) ? proxy : "DIRECT";
 };
 
-/**
- * 不会被执行
- */
+// 不会被执行
 if (0) {
-    function shExpMatch(): void {
+    function shExpMatch() {
         void 0;
     }
 }
 
-if (!shExpMatch) {
+if (!shExpMatch && console.group) {
     const hosts = [
         "pan.baiDu.com",
         "www.baiDu.com",
         "google.com",
         "mail.google.com"
     ];
-    console.group(REGEXP.toString());
-    hosts.map(function (host) {
-        console.log(host + " | " + FindProxyForURL("", host));
+    console.group(re.toString());
+    hosts.forEach(function (h) {
+        console.log(h + " | " + FindProxyForURL("", h));
     });
     console.groupEnd();
 }
