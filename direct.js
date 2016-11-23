@@ -92,7 +92,7 @@ host_rules.forEach(function (hr) {
         host_rules_www_google_com.push(hr.replace(/\./g, "\\."));
     }
 });
-var re_str_domains = "(?:\\.[A-Za-z]+){1,2}", re_arr_all = [];
+var re_str_domains = "(?:\\.\\S+){1,2}", re_arr_all = [];
 // 匹配类似：google.com 或者 *.google.* 或者 *.google.com 的头
 if (host_rules_x_google_x.length > 0 || host_rules_x_google_com.length > 0) {
     var re_arr_x = [];
