@@ -1,4 +1,4 @@
-const proxy = "SOCKS5 localhost:51080",
+const proxy = "SOCKS5 localhost:52080",
     localhost = [
         "127.0.0.1",
         "192.168.1.1",

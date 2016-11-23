@@ -137,7 +137,8 @@ var re_str_all = "^(?:" + re_arr_all.join("|") + ")$", re = new RegExp(re_str_al
  * @constructor
  */
 var FindProxyForURL = function (url, host) {
-    // if (url) void 0;
+    if (0)
+        void [url];
     return re.test(host) ? proxy : "DIRECT";
 };
 // 不会被执行

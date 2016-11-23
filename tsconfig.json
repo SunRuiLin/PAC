@@ -12,10 +12,13 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "removeComments": false,
-    "module": "commonjs",
+    "module": "system",
     "target": "es5",
     "sourceMap": true,
     "declaration": false,
     "watch": true
-  }
+  },
+  "exclude": [
+    "*.ts"
+  ]
 }

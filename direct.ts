@@ -179,7 +179,7 @@ const re_str_all = `^(?:${re_arr_all.join("|")})$`,
  * @constructor
  */
 const FindProxyForURL = (url: string, host: string) => {
-    // if (url) void 0;
+    if (0) void [url];
     return re.test(host) ? proxy : "DIRECT";
 };
 
