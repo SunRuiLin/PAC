@@ -7,7 +7,7 @@ const proxy = "SOCKS5 localhost:51080",
         "*.v2ex.com",
 
         // Mozilla
-        "*.mozilla.org",
+        "*.mozilla.*",
 
         // Regex101
         "*.regex101.com",

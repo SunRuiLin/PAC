@@ -4,7 +4,7 @@ var proxy = "SOCKS5 localhost:51080", host_rules = [
     // V2EX
     "*.v2ex.com",
     // Mozilla
-    "*.mozilla.org",
+    "*.mozilla.*",
     // Regex101
     "*.regex101.com",
     // RegexPer
