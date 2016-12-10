@@ -8,7 +8,7 @@
     "noFallthroughCasesInSwitch": true,
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
-    //    "alwaysStrict": true,
+    "alwaysStrict": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "removeComments": false,
