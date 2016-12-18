@@ -30,7 +30,8 @@ const proxy = "SOCKS5 localhost:51080",
         // Calibre
         "*.calibre-eBook.com",
 
-        // Mail
+        // 1&1
+        "*.gmx.*",
         "*.mail.com",
         "*.uiCdn.com",
         "*.ui-portal.de",
