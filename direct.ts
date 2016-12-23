@@ -51,6 +51,7 @@ const proxy = "SOCKS5 localhost:51080",
         "*.facebook.*",
 
         // Twitter
+        "*.t.co",
         "*.twitter.com",
         "*.twImg.com",
 

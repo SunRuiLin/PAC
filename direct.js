@@ -35,6 +35,7 @@ var proxy = "SOCKS5 localhost:51080", host_rules = [
     // Facebook
     "*.facebook.*",
     // Twitter
+    "*.t.co",
     "*.twitter.com",
     "*.twImg.com",
     // Wikipedia
