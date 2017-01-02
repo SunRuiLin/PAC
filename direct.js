@@ -1,6 +1,8 @@
 var proxy = "SOCKS5 localhost:51080", host_rules = [
     // IP138
     "*.ip138.com",
+    // GitBooks
+    "*.gitBooks.io",
     // V2EX
     "*.v2ex.com",
     // Mozilla
