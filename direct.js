@@ -2,7 +2,10 @@ var proxy = "SOCKS5 localhost:51080", host_rules = [
     // IP138
     "*.ip138.com",
     // PIXNET
+    "*.pImg.tw",
+    "*.pixFs.net",
     "*.pixnet.net",
+    "*.pixAnalytics.com",
     // GitBooks
     "*.gitBooks.io",
     // V2EX
@@ -37,6 +40,7 @@ var proxy = "SOCKS5 localhost:51080", host_rules = [
     // W3Schools
     "*.w3schools.com",
     // Facebook
+    "*.fbCdn.net",
     "*.facebook.*",
     // Twitter
     "*.t.co",
@@ -76,6 +80,7 @@ var proxy = "SOCKS5 localhost:51080", host_rules = [
     "*.google-analytics.com",
     "*.googleTagServices.*",
     "*.googleUserContent.com",
+    "*.googleSyndication.com"
 ], domains = [
     "au",
     "cn",

@@ -4,7 +4,10 @@ const proxy = "SOCKS5 localhost:51080",
         "*.ip138.com",
 
         // PIXNET
+        "*.pImg.tw",
+        "*.pixFs.net",
         "*.pixnet.net",
+        "*.pixAnalytics.com",
 
         // GitBooks
         "*.gitBooks.io",
@@ -54,6 +57,7 @@ const proxy = "SOCKS5 localhost:51080",
         "*.w3schools.com",
 
         // Facebook
+        "*.fbCdn.net",
         "*.facebook.*",
 
         // Twitter
@@ -97,6 +101,7 @@ const proxy = "SOCKS5 localhost:51080",
         "*.google-analytics.com",
         "*.googleTagServices.*",
         "*.googleUserContent.com",
+        "*.googleSyndication.com"
     ],
     domains = [
         "au",
