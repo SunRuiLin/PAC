@@ -3,6 +3,9 @@ const proxy = "SOCKS5 localhost:51080",
         // IP138
         "*.ip138.com",
 
+        // PIXNET
+        "*.pixnet.net",
+
         // GitBooks
         "*.gitBooks.io",
 
