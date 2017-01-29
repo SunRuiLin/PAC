@@ -3,6 +3,9 @@ const proxy = "SOCKS5 localhost:51080",
         // IP138
         "*.ip138.com",
 
+        // 通联数据
+        "*.wmCloud.com",
+
         // PIXNET
         "*.pImg.tw",
         "*.pixFs.net",
