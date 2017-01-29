@@ -1,6 +1,9 @@
 var proxy = "SOCKS5 localhost:51080", host_rules = [
     // IP138
     "*.ip138.com",
+    // Read The Docs
+    "*.RTfd.io",
+    "*.readTheDocs.*",
     // 通联数据
     "*.wmCloud.com",
     // PIXNET
