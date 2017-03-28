@@ -7,7 +7,7 @@ var proxy = "SOCKS5 localhost:51080", host_rules = [
     "*.RTfd.io",
     "*.readTheDocs.*",
     // 通联数据
-    "*.wmCloud.com",
+    // "*.wmCloud.com",
     // PIXNET
     "*.pImg.tw",
     "*.pixFs.net",

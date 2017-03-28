@@ -11,7 +11,7 @@ const proxy = "SOCKS5 localhost:51080",
         "*.readTheDocs.*",
 
         // 通联数据
-        "*.wmCloud.com",
+        // "*.wmCloud.com",
 
         // PIXNET
         "*.pImg.tw",
