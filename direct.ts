@@ -3,11 +3,11 @@ const proxy = "SOCKS5 localhost:51080",
         // IP138
         "*.ip138.com",
 
-        // 股票公式
-        "*.gupang.com",
+        // 股票相关
         "*.88gs.com",
-
-        // Investopedia
+        "*.gupang.com",
+        "*.quantopian.com",
+        "*.stockcharts.com",
         "*.investopedia.com",
 
         // Microsoft
