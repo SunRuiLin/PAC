@@ -1,6 +1,9 @@
 var proxy = "SOCKS5 localhost:51080", host_rules = [
     // IP138
     "*.ip138.com",
+    // 股票公式
+    "*.gupang.com",
+    "*.88gs.com",
     // Investopedia
     "*.investopedia.com",
     // Microsoft
