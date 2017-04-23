@@ -3,6 +3,7 @@ var proxy = "SOCKS5 localhost:51080", host_rules = [
     "*.ip138.com",
     // 股票相关
     "*.88gs.com",
+    "*.fmlabs.com",
     "*.gupang.com",
     "*.quantopian.com",
     "*.stockcharts.com",

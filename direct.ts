@@ -5,6 +5,7 @@ const proxy = "SOCKS5 localhost:51080",
 
         // 股票相关
         "*.88gs.com",
+        "*.fmlabs.com",
         "*.gupang.com",
         "*.quantopian.com",
         "*.stockcharts.com",
